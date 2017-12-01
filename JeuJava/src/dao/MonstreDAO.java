@@ -48,7 +48,10 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				//System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println(rs.getString("nomMonstre"));
+				System.out.println(rs.getString("pdvMonstre"));
+				System.out.println(rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");

@@ -10,7 +10,7 @@ public class Exec {
 		
 		//monstre.getById(1);
 		//monstre.insert();
-		monstre.deleteById(1);
+		//monstre.deleteById(1);
 		monstre.select();
 
 	}
