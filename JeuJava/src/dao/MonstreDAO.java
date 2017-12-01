@@ -48,7 +48,10 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				//System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println(rs.getString("nomMonstre"));
+				System.out.println(rs.getString("pdvMonstre"));
+				System.out.println(rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
@@ -58,7 +61,7 @@ public class MonstreDAO {
 	
 	//Méthode pour insert
 	public void insert() {
-		String requete3="INSERT INTO `monstre` (`nomMonstre`, `pdvMonstre`, `forceMonstre`) VALUES ('NOUKEU', '250', '60');";
+		String requete3="INSERT INTO `monstre` (`nomMonstre`, `pdvMonstre`, `forceMonstre`) VALUES ('Noukeu', '200', '50');";
 		Statement stmt = null;
 		int insert =0;
 		bddconnection();
