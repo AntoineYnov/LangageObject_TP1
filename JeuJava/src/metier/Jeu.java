@@ -1,9 +1,11 @@
 package metier;
 
+import dao.MonstreDAO;
 import presentation.Monstre;
 
 public class Jeu {
-	Monstre monstre1, monstre2;
+	MonstreDAO monstre = new MonstreDAO();
+	Monstre monstre2;
 
 	boolean jeuEnCours=true;
 	Jeu jeu;
@@ -17,6 +19,10 @@ public class Jeu {
 	}
 	
 	public void victoire() {
+		Monstre monstre1 = monstre.creerMonstre();
+		Monstre monstre2 = monstre.creerMonstre();
+		System.out.println(monstre1.getNomMonstre());
+		System.out.println(monstre2.getNomMonstre());
 		if(monstre1.getPdvMonstre()==0) {
 			System.out.println("Victoire de "+monstre2.getNomMonstre()+"Le "+monstre1.getNomMonstre()+" est mort au combat");
 		}

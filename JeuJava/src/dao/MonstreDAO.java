@@ -5,12 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import presentation.Monstre;
 
 public class MonstreDAO {
-	Monstre monstre;
+	Monstre monstre1;
 	Connection con = null;
+	Scanner demande = new Scanner(System.in);
 	private Connection bddconnection() {
 		 //Enregistrement en BDD
 		 //chargement du pilote
@@ -33,10 +35,12 @@ public class MonstreDAO {
 	
 	
 	//Méthode pour select *
-	public void select() {
+	public Monstre creerMonstre() {
 		Statement stmt = null;
 		ResultSet rs = null;
-		String requete = "SELECT * FROM MONSTRE";
+		System.out.println("Choississez un monstre ! ");
+		String demandeIdentifiation = demande.nextLine();
+		String requete = "SELECT * FROM MONSTRE WHERE id="+demandeIdentifiation+";";;
 		bddconnection();
 		try {
 			stmt = con.createStatement();
@@ -50,8 +54,6 @@ public class MonstreDAO {
 		Integer forceMonstre = null;
 		
 		try {
-
-			while (rs.next()) {
 				//System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			String id	= rs.getString("id");
 			idParseInt = Integer.parseInt(id);
@@ -60,19 +62,17 @@ public class MonstreDAO {
 			pvMonstre = Integer.parseInt(pv);
 			String force = rs.getString("forcemonstre");
 			forceMonstre = Integer.parseInt(force);
-				System.out.println(rs.getString("id"));
-				System.out.println(rs.getString("nomMonstre"));
-				System.out.println(rs.getString("pdvMonstre"));
-				System.out.println(rs.getString("forceMonstre"));
-			}
+//				System.out.println(rs.getString("id"));
+//				System.out.println(rs.getString("nomMonstre"));
+//				System.out.println(rs.getString("pdvMonstre"));
+//				System.out.println(rs.getString("forceMonstre"));
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
 		}
-		
+		Monstre monstre = new Monstre(idParseInt,nomMonstre,pvMonstre,forceMonstre);
 		bddclose();
-		
-		Monstre sam = new Monstre(idParseInt, nomMonstre, pvMonstre, forceMonstre);
-		sam.afficherMonstre();
+//		sam.afficherMonstre();
+		return monstre;
 	}
 	
 	//Méthode pour insert
