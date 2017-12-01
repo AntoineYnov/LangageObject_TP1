@@ -4,6 +4,7 @@ import presentation.Monstre;
 
 public class Jeu {
 	Monstre monstre1, monstre2;
+
 	boolean jeuEnCours=true;
 	Jeu jeu;
 	
@@ -24,5 +25,7 @@ public class Jeu {
 		}
 		jeuEnCours=false;
 	}
+	public int combat (Monstre monstre1,Monstre monstre2) {
+		return 0;	}
 }
 
