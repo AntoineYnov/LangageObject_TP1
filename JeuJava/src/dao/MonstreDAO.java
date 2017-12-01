@@ -113,7 +113,8 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println("Numéro | Nom | PDV | Force");
+				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
@@ -139,7 +140,8 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println("Numéro | Nom | PDV | Force");
+				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");

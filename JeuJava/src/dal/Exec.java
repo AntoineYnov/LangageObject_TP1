@@ -12,13 +12,15 @@ public class Exec {
 		Jeu jeu = new Jeu();
 		
 
-		monstre.getById(2);
+		jeu.menu();
+		//monstre.getById(2);
 		//monstre.insert();
 		//monstre.deleteById(1);
-		//monstre.select();
+		monstre.select();
 		jeu.random();
 		jeu.finJeu();
 		//jeu.victoire();
+		//7jeu.attaque();
 	}
 
 }
