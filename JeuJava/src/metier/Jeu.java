@@ -7,6 +7,13 @@ public class Jeu {
 
 	boolean jeuEnCours=true;
 	Jeu jeu;
+	double multiplicateurAleatoire = 0;
+	
+	public double random() {
+		multiplicateurAleatoire = Math.random()*10;
+		System.out.println(multiplicateurAleatoire);
+		return multiplicateurAleatoire;
+	}
 	
 	public boolean finJeu() {
 		if (jeuEnCours==false) {
