@@ -46,13 +46,15 @@ public class Monstre {
 	}
 	
 	public void afficherMonstre()
-	{
+	{	
+		Integer id = getId();
 		String nomDuMonstre = getNomMonstre();
-		System.out.println(nomDuMonstre);
+		//System.out.println(nomDuMonstre);
 		Integer pvDuMonstre = getPdvMonstre();
-		System.out.println(pvDuMonstre);
+		//System.out.println(pvDuMonstre);
 		Integer forceDuMonstre = getForceMonstre();
-		System.out.println(forceDuMonstre);
+		//System.out.println(forceDuMonstre);
+		System.out.println("n°" + id + " " + nomDuMonstre + " " + pvDuMonstre + " " + forceDuMonstre);
 	}
 
 }

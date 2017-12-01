@@ -13,4 +13,11 @@ public class Jeu {
 	public int combat (Monstre monstre1,Monstre monstre2) {
 		return 0;
 	}
+	
+	public void menu ()
+	{
+		System.out.println("Bienvenue dans Monster-Battle");
+		System.out.println("Veuillez choisir un monstre avec son numéro !");
+	}
+	
 }

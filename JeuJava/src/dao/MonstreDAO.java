@@ -52,7 +52,7 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				//System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+			// System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			String id	= rs.getString("id");
 			idParseInt = Integer.parseInt(id);
 			nomMonstre = rs.getString("nomMonstre");
@@ -60,18 +60,19 @@ public class MonstreDAO {
 			pvMonstre = Integer.parseInt(pv);
 			String force = rs.getString("forcemonstre");
 			forceMonstre = Integer.parseInt(force);
-				System.out.println(rs.getString("id"));
+			Monstre sam = new Monstre(idParseInt, nomMonstre, pvMonstre, forceMonstre);
+			sam.afficherMonstre();
+			/*	System.out.println(rs.getString("id"));
 				System.out.println(rs.getString("nomMonstre"));
 				System.out.println(rs.getString("pdvMonstre"));
-				System.out.println(rs.getString("forceMonstre"));
+				System.out.println(rs.getString("forceMonstre"));*/
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
 		}
 		bddclose();
 		
-		Monstre sam = new Monstre(idParseInt, nomMonstre, pvMonstre, forceMonstre);
-		sam.afficherMonstre();
+		
 	}
 	
 	//Méthode pour insert
