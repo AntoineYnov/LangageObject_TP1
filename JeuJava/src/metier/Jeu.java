@@ -1,5 +1,7 @@
 package metier;
 
+import java.util.Scanner;
+
 import presentation.Monstre;
 
 public class Jeu {
@@ -29,6 +31,17 @@ public class Jeu {
 	{
 		System.out.println("Bienvenue dans Monster-Battle");
 		System.out.println("Veuillez choisir un monstre avec son numéro !");
+	}
+	
+	public void choixMonstre()
+	{
+		    Scanner sc = new Scanner(System.in);
+		    System.out.println("Monstre joueur 1 ?: ");
+		    String choix1 = sc.nextLine();
+		    Integer.parseInt(choix1);
+		    System.out.println("Monstre joueur 2 ?: ");
+		    String choix2 = sc.nextLine();
+		    Integer.parseInt(choix2);
 	}
 	
 	public int combat (Monstre monstre1,Monstre monstre2) {

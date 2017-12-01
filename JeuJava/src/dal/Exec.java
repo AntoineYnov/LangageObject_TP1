@@ -17,8 +17,10 @@ public class Exec {
 		//monstre.getById(1);
 		//monstre.insert();
 		//monstre.deleteById(1);
+		jeu.menu();
 		monstre.select();
-		jeu.finJeu();
+		jeu.choixMonstre();
+		// jeu.finJeu();
 		jeu.victoire();
 	}
 
