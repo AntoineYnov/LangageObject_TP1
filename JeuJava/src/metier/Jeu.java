@@ -31,7 +31,13 @@ public class Jeu {
 			System.out.println("Victoire de "+monstre1.getNomMonstre()+"Le "+monstre2.getNomMonstre()+" est mort au combat");
 		}
 		jeuEnCours=false;
+	}	
+	public void menu ()
+	{
+		System.out.println("Bienvenue dans Monster-Battle");
+		System.out.println("Veuillez choisir un monstre avec son numéro !");
 	}
+	
 	public int combat (Monstre monstre1,Monstre monstre2) {
 		return 0;	}
 }
