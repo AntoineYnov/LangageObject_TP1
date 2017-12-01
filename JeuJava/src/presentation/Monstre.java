@@ -44,6 +44,15 @@ public class Monstre {
 	    pdvMonstre = mpdv;
 	    forceMonstre = mforce;
 	}
-
+	
+	public void afficherMonstre()
+	{
+		String nomDuMonstre = getNomMonstre();
+		System.out.println(nomDuMonstre);
+		Integer pvDuMonstre = getPdvMonstre();
+		System.out.println(pvDuMonstre);
+		Integer forceDuMonstre = getForceMonstre();
+		System.out.println(forceDuMonstre);
+	}
 
 }
