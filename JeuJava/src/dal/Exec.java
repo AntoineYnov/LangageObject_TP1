@@ -7,9 +7,11 @@ public class Exec {
 	public static void main(String[] args) {
 		MonstreDAO monstre = new MonstreDAO();
 		
-		monstre.select();
+		
 		//monstre.getById(1);
 		//monstre.insert();
+		monstre.deleteById(1);
+		monstre.select();
 
 	}
 
