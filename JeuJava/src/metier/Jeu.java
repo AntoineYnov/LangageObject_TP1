@@ -6,6 +6,7 @@ import presentation.Monstre;
 public class Jeu {
 	MonstreDAO monstre = new MonstreDAO();
 	Monstre monstre2;
+	double multiplicateurAleatoire = 0;
 
 	boolean jeuEnCours=true;
 	Jeu jeu;
@@ -32,6 +33,18 @@ public class Jeu {
 		jeuEnCours=false;
 	}
 	public int combat (Monstre monstre1,Monstre monstre2) {
-		return 0;	}
+		return 0;	
+		}
+	public double random() {
+        multiplicateurAleatoire = Math.random()*100;
+        System.out.println(multiplicateurAleatoire);
+        return multiplicateurAleatoire;
+    }
+	public void menu ()
+    {
+        System.out.println("Bienvenue dans Monster-Battle");
+        System.out.println("Veuillez choisir un monstre avec son numéro !");
+    }
 }
+
 

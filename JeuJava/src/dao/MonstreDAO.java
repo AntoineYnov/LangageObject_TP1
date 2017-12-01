@@ -38,9 +38,12 @@ public class MonstreDAO {
 	public Monstre creerMonstre() {
 		Statement stmt = null;
 		ResultSet rs = null;
-		System.out.println("Choississez un monstre ! ");
+//		System.out.println("Choississez un monstre ! ");
+		
+		// Ne comprends pas l'erreur SQL.
+		
 		String demandeIdentifiation = demande.nextLine();
-		String requete = "SELECT * FROM MONSTRE WHERE id="+demandeIdentifiation+";";;
+		String requete = "SELECT * FROM MONSTRE WHERE id="+demandeIdentifiation+";";
 		bddconnection();
 		try {
 			stmt = con.createStatement();
@@ -54,7 +57,7 @@ public class MonstreDAO {
 		Integer forceMonstre = null;
 		
 		try {
-				//System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+
 			String id	= rs.getString("id");
 			idParseInt = Integer.parseInt(id);
 			nomMonstre = rs.getString("nomMonstre");
@@ -71,7 +74,6 @@ public class MonstreDAO {
 		}
 		Monstre monstre = new Monstre(idParseInt,nomMonstre,pvMonstre,forceMonstre);
 		bddclose();
-//		sam.afficherMonstre();
 		return monstre;
 	}
 	
@@ -106,7 +108,8 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println("Numéro | Nom | PDV | Force");
+				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
@@ -132,7 +135,8 @@ public class MonstreDAO {
 		try {
 
 			while (rs.next()) {
-				System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+				System.out.println("Numéro | Nom | PDV | Force");
+				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
 			}
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
