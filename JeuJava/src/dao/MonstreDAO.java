@@ -38,42 +38,62 @@ public class MonstreDAO {
 	public Monstre creerMonstre() {
 		Statement stmt = null;
 		ResultSet rs = null;
-//		System.out.println("Choississez un monstre ! ");
+		ResultSet rs2 = null;
+		
+		String requete2 = "SELECT * FROM MONSTRE;";
+		
+		try {
+			stmt = bddconnection().createStatement();
+			rs2 = stmt.executeQuery(requete2);
+			while (rs2.next()) {
+				System.out.println("Numéro | Nom | PDV | Force");
+				System.out.println(rs2.getString("id")+" | "+rs2.getString("nomMonstre")+" | "+rs2.getString("pdvMonstre")+" | "+rs2.getString("forceMonstre"));
+			}
+
+		}catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+
 		
 		// Ne comprends pas l'erreur SQL.
 		
 		String demandeIdentifiation = demande.nextLine();
-		String requete = "SELECT * FROM MONSTRE WHERE id="+demandeIdentifiation+";";
-		bddconnection();
+		Integer test = Integer.parseInt(demandeIdentifiation);
+		String requete = "SELECT * FROM MONSTRE WHERE id="+test+";";
+		
+		
+		
 		try {
-			stmt = con.createStatement();
+			stmt = bddconnection().createStatement();
 			rs = stmt.executeQuery(requete);
 		} catch (SQLException e) {
 			System.out.println("Anomalie lors de l'execution de la requète");
 		}
-		Integer idParseInt = 0;
+		int id = 0;
 		String nomMonstre = null;
-		Integer pvMonstre = null;
-		Integer forceMonstre = null;
+		int pvMonstre = 0;
+		int forceMonstre = 0;
 		
 		try {
-
-			String id	= rs.getString("id");
-			idParseInt = Integer.parseInt(id);
+			rs.next();
+			id = rs.getInt("id"); // ICI QUE SA PLANTE
 			nomMonstre = rs.getString("nomMonstre");
-			String pv = rs.getString("pdvmonstre");
-			pvMonstre = Integer.parseInt(pv);
-			String force = rs.getString("forcemonstre");
-			forceMonstre = Integer.parseInt(force);
-//				System.out.println(rs.getString("id"));
-//				System.out.println(rs.getString("nomMonstre"));
-//				System.out.println(rs.getString("pdvMonstre"));
-//				System.out.println(rs.getString("forceMonstre"));
+			pvMonstre = rs.getInt("pdvMonstre");
+			forceMonstre = rs.getInt("forceMonstre");
+				System.out.println(rs.getInt("id"));
+				System.out.println(rs.getString("nomMonstre"));
+				System.out.println(rs.getInt("pdvMonstre"));
+				System.out.println(rs.getInt("forceMonstre"));
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
+			e.printStackTrace();
 		}
-		Monstre monstre = new Monstre(idParseInt,nomMonstre,pvMonstre,forceMonstre);
+		Monstre monstre = new Monstre(id,nomMonstre,pvMonstre,forceMonstre);
 		bddclose();
+		
 		return monstre;
 	}
 	
@@ -105,15 +125,15 @@ public class MonstreDAO {
 			System.out.println("Anomalie lors de l'execution de la requète");
 		}
 		
-		try {
-
-			while (rs.next()) {
-				System.out.println("Numéro | Nom | PDV | Force");
-				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
-			}
-		} catch (SQLException e) {
-			System.out.println("Problème de SQL");
-		}
+//		try {
+//
+//			while (rs.next()) {
+//				System.out.println("Numéro | Nom | PDV | Force");
+//				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+//			}
+//		} catch (SQLException e) {
+//			System.out.println("Problème de SQL");
+//		}
 		bddclose();
 		return rs;
 	}
