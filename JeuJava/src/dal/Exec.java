@@ -10,6 +10,7 @@ public class Exec {
 //		Jeu jeu = new Jeu(	Monstre monstre1,Monstre monstre2);
 		MonstreDAO monstre = new MonstreDAO();
 		Jeu jeu = new Jeu();
+
 		
 
 		jeu.menu();
@@ -17,10 +18,9 @@ public class Exec {
 		//monstre.insert();
 		//monstre.deleteById(1);
 		monstre.select();
-		jeu.random();
+		jeu.attaque();
+		jeu.victoire();
 		jeu.finJeu();
-		//jeu.victoire();
-		//7jeu.attaque();
 	}
 
 }

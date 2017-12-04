@@ -3,17 +3,22 @@ package metier;
 import presentation.Monstre;
 
 public class Jeu {
-	Monstre monstre1, monstre2;
+	Monstre monstre1 = new Monstre(5,"Antoine",50,60);
+	Monstre monstre2 = new Monstre(6,"Samory",50,60);
+	
+
 
 	boolean jeuEnCours=true;
 	Jeu jeu;
-	double multiplicateurAleatoire = 0;
+	double random1 = 0;
+	double random2 = 0;
 	
-	public double random() {
-		multiplicateurAleatoire = Math.random()*100;
-		System.out.println(multiplicateurAleatoire);
-		return multiplicateurAleatoire;
-	}
+//	public double random() {
+//		random1 = Math.random()*100;
+//		//System.out.println(multiplicateurAleatoire);
+//		return random1;
+//	}
+
 	
 	public boolean finJeu() {
 		if (jeuEnCours==false) {
@@ -24,21 +29,30 @@ public class Jeu {
 	}
 	
 	public void victoire() {
-		if(monstre1.getPdvMonstre()==0) {
-			System.out.println("Victoire de "+monstre2.getNomMonstre()+"Le "+monstre1.getNomMonstre()+" est mort au combat");
+		if(monstre1.getPdvMonstre()<=0) {
+			System.out.println("Victoire de "+monstre2.getNomMonstre()+" sur "+monstre1.getNomMonstre());
 		}
-		else if(monstre2.getPdvMonstre()==0) {
-			System.out.println("Victoire de "+monstre1.getNomMonstre()+"Le "+monstre2.getNomMonstre()+" est mort au combat");
+		else if(monstre2.getPdvMonstre()<=0) {
+			System.out.println("Victoire de "+monstre1.getNomMonstre()+" sur "+monstre2.getNomMonstre());
 		}
 		jeuEnCours=false;
 	}	
 	
 	public void attaque() {
-		if(monstre1.getForceMonstre()*multiplicateurAleatoire > monstre2.getForceMonstre()*multiplicateurAleatoire){
-			monstre2.setPdvMonstre(monstre2.getPdvMonstre()-10);
-		}
-		else if(monstre1.getForceMonstre()*multiplicateurAleatoire < monstre2.getForceMonstre()*multiplicateurAleatoire) {
-			monstre1.setPdvMonstre(monstre1.getPdvMonstre()-10);
+		
+		while (monstre1.getPdvMonstre()>0 && monstre2.getPdvMonstre()>0) {
+			random1 = Math.random()*100;
+			random2 = Math.random()*100;
+				if(monstre1.getForceMonstre()*random1 > monstre2.getForceMonstre()*random2){
+				monstre2.setPdvMonstre(monstre2.getPdvMonstre()-10);
+				System.out.println("Score de "+monstre1.getNomMonstre()+": "+monstre1.getForceMonstre()*random1+" Score de "+monstre2.getNomMonstre()+": "+monstre2.getForceMonstre()*random2);
+				System.out.println(monstre2.getNomMonstre()+" perd 10 points de vie, il lui reste "+monstre2.getPdvMonstre()+" points de vie");
+			}
+			else if(monstre1.getForceMonstre()*random1 < monstre2.getForceMonstre()*random2) {
+				monstre1.setPdvMonstre(monstre1.getPdvMonstre()-10);
+				System.out.println("Score de "+monstre2.getNomMonstre()+": "+monstre2.getForceMonstre()*random2+" Score de "+monstre1.getNomMonstre()+": "+monstre1.getForceMonstre()*random1);
+				System.out.println(monstre1.getNomMonstre()+" perd 10 points de vie, il lui reste "+monstre1.getPdvMonstre()+" points de vie");
+			}
 		}
 	}
 	public void menu ()

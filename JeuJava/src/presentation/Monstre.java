@@ -5,6 +5,16 @@ public class Monstre {
 	private String nomMonstre;
 	public int pdvMonstre;
 	public int forceMonstre;
+	
+	public Monstre(int mid, String mnom, int mpdv, int mforce) {
+		id = mid;
+	    nomMonstre = mnom;
+	    pdvMonstre = mpdv;
+	    forceMonstre = mforce;
+	}
+	
+	public Monstre() {	
+	}
 
 	public int getId() {
 		return id;
@@ -38,12 +48,6 @@ public class Monstre {
 		this.forceMonstre = forceMonstre;
 	}
 
-	public Monstre(int mid, String mnom, int mpdv, int mforce) {
-		id = mid;
-	    nomMonstre = mnom;
-	    pdvMonstre = mpdv;
-	    forceMonstre = mforce;
-	}
 	
 	public void afficherMonstre()
 	{	
@@ -54,7 +58,7 @@ public class Monstre {
 		//System.out.println(pvDuMonstre);
 		Integer forceDuMonstre = getForceMonstre();
 		//System.out.println(forceDuMonstre);
-		System.out.println("n°" + id + " " + nomDuMonstre + " " + pvDuMonstre + " " + forceDuMonstre);
+		System.out.println("Monstre n°" + id + " Nom: " + nomDuMonstre + " PDV: " + pvDuMonstre + " Force: " + forceDuMonstre);
 	}
 
 }
