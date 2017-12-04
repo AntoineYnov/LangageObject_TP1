@@ -101,7 +101,7 @@ public class MonstreDAO {
 	
 	//Méthode pour insert
 	public void insert() {
-		String requete3="INSERT INTO `monstre` (`nomMonstre`, `pdvMonstre`, `forceMonstre`) VALUES ('Noukeu', '200', '50');";
+		String requete3="INSERT INTO `monstre` (`nomMonstre`, `pdvMonstre`, `forceMonstre`) VALUES ('MICRO', '300', '60');";
 		Statement stmt = null;
 		int insert =0;
 		bddconnection();
