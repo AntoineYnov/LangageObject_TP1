@@ -1,9 +1,3 @@
-/dao/
-<<<<<<< HEAD
-/metier/
-/presentation/
-=======
-/presentation/
-/metier/
 /dal/
->>>>>>> aad4ac7c3761fdc3a2777c44af049c0dd06219ec
+/dao/
+/metier/
