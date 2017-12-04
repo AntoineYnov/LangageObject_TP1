@@ -1,7 +1,7 @@
 package presentation;
 
 public class Monstre {
-	public int id;
+	public Integer id;
 	private String nomMonstre;
 	public int pdvMonstre;
 	public int forceMonstre;
@@ -16,11 +16,11 @@ public class Monstre {
 	public Monstre() {	
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -48,17 +48,10 @@ public class Monstre {
 		this.forceMonstre = forceMonstre;
 	}
 
-	
-	public void afficherMonstre()
-	{	
-		Integer id = getId();
-		String nomDuMonstre = getNomMonstre();
-		//System.out.println(nomDuMonstre);
-		Integer pvDuMonstre = getPdvMonstre();
-		//System.out.println(pvDuMonstre);
-		Integer forceDuMonstre = getForceMonstre();
-		//System.out.println(forceDuMonstre);
-		System.out.println("Monstre n°" + id + " Nom: " + nomDuMonstre + " PDV: " + pvDuMonstre + " Force: " + forceDuMonstre);
+	public Monstre(Integer mid, String mnom, int mpdv, int mforce) {
+		id = mid;
+	    nomMonstre = mnom;
+	    pdvMonstre = mpdv;
+	    forceMonstre = mforce;
 	}
-
 }

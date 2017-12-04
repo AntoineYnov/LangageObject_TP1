@@ -5,12 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import presentation.Monstre;
 
 public class MonstreDAO {
-	Monstre monstre;
 	Connection con = null;
+	Scanner demande = new Scanner(System.in);
 	private Connection bddconnection() {
 		 //Enregistrement en BDD
 		 //chargement du pilote
@@ -33,53 +34,69 @@ public class MonstreDAO {
 	
 	
 	//Méthode pour select *
-	public void select() {
+	public Monstre creerMonstre() {
 		Statement stmt = null;
 		ResultSet rs = null;
-		String requete = "SELECT * FROM MONSTRE";
-		bddconnection();
+		ResultSet rs2 = null;
+        
+		System.out.println("Bienvenue dans Monster-Battle");
+        System.out.println("Veuillez choisir un monstre avec son numéro !");
+		
+        String requete2 = "SELECT * FROM MONSTRE;";
+		
+        System.out.println("Numéro | Nom | PDV | Force");
 		try {
-			stmt = con.createStatement();
+			stmt = bddconnection().createStatement();
+			rs2 = stmt.executeQuery(requete2);
+			while (rs2.next()) {
+				System.out.println(rs2.getString("id")+" | "+rs2.getString("nomMonstre")+" | "+rs2.getString("pdvMonstre")+" | "+rs2.getString("forceMonstre"));
+			}
+
+		}catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+
+		
+		// Ne comprends pas l'erreur SQL.
+		
+		String demandeIdentifiation = demande.nextLine();
+		Integer test = Integer.parseInt(demandeIdentifiation);
+		String requete = "SELECT * FROM MONSTRE WHERE id="+test+";";
+		
+		
+		
+		try {
+			stmt = bddconnection().createStatement();
 			rs = stmt.executeQuery(requete);
 		} catch (SQLException e) {
 			System.out.println("Anomalie lors de l'execution de la requète");
 		}
-		Integer idParseInt = 0;
+		int id = 0;
 		String nomMonstre = null;
-		Integer pvMonstre = null;
-		Integer forceMonstre = null;
+		int pvMonstre = 0;
+		int forceMonstre = 0;
 		
 		try {
-
-			while (rs.next()) {
-			// System.out.println(rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
-			String id	= rs.getString("id");
-			idParseInt = Integer.parseInt(id);
+			rs.next();
+			id = rs.getInt("id"); // ICI QUE SA PLANTE
 			nomMonstre = rs.getString("nomMonstre");
-			String pv = rs.getString("pdvmonstre");
-			pvMonstre = Integer.parseInt(pv);
-			String force = rs.getString("forcemonstre");
-			forceMonstre = Integer.parseInt(force);
-
-				//System.out.println(rs.getString("id"));
-
-			Monstre sam = new Monstre(idParseInt, nomMonstre, pvMonstre, forceMonstre);
-			sam.afficherMonstre();
-			/*	System.out.println(rs.getString("id"));
+			pvMonstre = rs.getInt("pdvMonstre");
+			forceMonstre = rs.getInt("forceMonstre");
+				System.out.println(rs.getInt("id"));
 				System.out.println(rs.getString("nomMonstre"));
-				System.out.println(rs.getString("pdvMonstre"));
-				System.out.println(rs.getString("forceMonstre"));*/
-			}
+				System.out.println(rs.getInt("pdvMonstre"));
+				System.out.println(rs.getInt("forceMonstre"));
 		} catch (SQLException e) {
 			System.out.println("Problème de SQL");
+			e.printStackTrace();
 		}
-		
+		Monstre monstre = new Monstre(id,nomMonstre,pvMonstre,forceMonstre);
 		bddclose();
 		
-
-		Monstre monstre1 = new Monstre(idParseInt, nomMonstre, pvMonstre, forceMonstre);
-		//monstre1.afficherMonstre();
-
+		return monstre;
 	}
 	
 	//Méthode pour insert
@@ -110,15 +127,15 @@ public class MonstreDAO {
 			System.out.println("Anomalie lors de l'execution de la requète");
 		}
 		
-		try {
-
-			while (rs.next()) {
-				System.out.println("Numéro | Nom | PDV | Force");
-				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
-			}
-		} catch (SQLException e) {
-			System.out.println("Problème de SQL");
-		}
+//		try {
+//
+//			while (rs.next()) {
+//				System.out.println("Numéro | Nom | PDV | Force");
+//				System.out.println(rs.getString("id")+" | "+rs.getString("nomMonstre")+" | "+rs.getString("pdvMonstre")+" | "+rs.getString("forceMonstre"));
+//			}
+//		} catch (SQLException e) {
+//			System.out.println("Problème de SQL");
+//		}
 		bddclose();
 		return rs;
 	}

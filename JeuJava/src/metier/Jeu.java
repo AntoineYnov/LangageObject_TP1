@@ -1,17 +1,9 @@
 package metier;
 
+import dao.MonstreDAO;
 import presentation.Monstre;
 
 public class Jeu {
-	Monstre monstre1 = new Monstre(5,"Antoine",50,60);
-	Monstre monstre2 = new Monstre(6,"Samory",50,60);
-	
-
-
-	boolean jeuEnCours=true;
-	Jeu jeu;
-	double random1 = 0;
-	double random2 = 0;
 	
 //	public double random() {
 //		random1 = Math.random()*100;
@@ -19,6 +11,15 @@ public class Jeu {
 //		return random1;
 //	}
 
+	MonstreDAO monstre = new MonstreDAO();
+	double random1 = 0;
+	double random2 =0;
+
+	boolean jeuEnCours=true;
+	Jeu jeu;
+	
+	Monstre monstre1 = monstre.creerMonstre();
+	Monstre monstre2 = monstre.creerMonstre();
 	
 	public boolean finJeu() {
 		if (jeuEnCours==false) {
@@ -29,6 +30,8 @@ public class Jeu {
 	}
 	
 	public void victoire() {
+
+		
 		if(monstre1.getPdvMonstre()<=0) {
 			System.out.println("Victoire de "+monstre2.getNomMonstre()+" sur "+monstre1.getNomMonstre());
 		}
@@ -36,7 +39,8 @@ public class Jeu {
 			System.out.println("Victoire de "+monstre1.getNomMonstre()+" sur "+monstre2.getNomMonstre());
 		}
 		jeuEnCours=false;
-	}	
+	}
+
 	
 	public void attaque() {
 		
@@ -55,10 +59,14 @@ public class Jeu {
 			}
 		}
 	}
+
+	
+	
 	public void menu ()
-	{
-		System.out.println("Bienvenue dans Monster-Battle");
-		System.out.println("Veuillez choisir un monstre avec son numéro !");
-	}
+    {
+        System.out.println("Bienvenue dans Monster-Battle");
+        System.out.println("Veuillez choisir un monstre avec son numéro !");
+    }
 }
+
 
